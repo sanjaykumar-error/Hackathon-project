@@ -1,0 +1,1109 @@
+<!-- Role Details Modal -->
+    <div class="modal fade" id="roleModal" tabindex="-1">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="roleModalTitle"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="roleModalContent">
+                        <!-- Role details will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   
+ 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Global variables
+        // let careerRoles = [];
+        // let filteredRoles = [];
+
+        // Load JSON data from external file
+        async function loadRolesData() {
+            try {
+                const response = await fetch('career-roles.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                careerRoles = await response.json();
+                filteredRoles = [...careerRoles];
+                
+                // Hide loading spinner and show content
+                document.getElementById('loadingSpinner').style.display = 'none';
+                document.getElementById('rolesContainer').classList.remove('d-none');
+                
+                renderRoles();
+                animateStats();
+            } catch (error) {
+                console.error('Error loading career roles data:', error);
+                document.getElementById('loadingSpinner').innerHTML = `
+                    <div class="alert alert-danger" style="max-width: 600px; margin: 0 auto; border-radius: 16px; border: none; box-shadow: var(--card-shadow);">
+                        <div style="text-align: center;">
+                            <i class="fas fa-exclamation-triangle fa-3x mb-3" style="color: #f56565;"></i>
+                            <h5 style="color: #2d3748; font-weight: 600;">Unable to Load Career Data</h5>
+                            <p style="color: var(--text-secondary); margin-bottom: 0;">Please make sure the <code>career-roles.json</code> file is in the same directory as this HTML file.</p>
+                            <small style="color: var(--text-secondary);">Error: ${error.message}</small>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        // Animate statistics counters
+        function animateStats() {
+            const counters = document.querySelectorAll('.stat-number');
+            counters.forEach(counter => {
+                const target = parseInt(counter.dataset.count);
+                const text = counter.textContent;
+                const suffix = text.replace(/\d+/g, '');
+                let current = 0;
+                const increment = target / 50;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    counter.textContent = Math.ceil(current) + suffix;
+                }, 30);
+            });
+        }
+
+        // Get category display name and class
+        function getCategoryInfo(category) {
+            const categoryMap = {
+                'development': { name: 'Development', class: 'category-development' },
+                'data': { name: 'Data & AI', class: 'category-data' },
+                'infrastructure': { name: 'Infrastructure', class: 'category-infrastructure' },
+                'security': { name: 'Security', class: 'category-security' },
+                'design': { name: 'Design', class: 'category-design' },
+                'emerging': { name: 'Emerging', class: 'category-emerging' }
+            };
+            return categoryMap[category] || { name: category, class: 'category-development' };
+        }
+
+        // Render roles cards
+        function renderRoles() {
+            const container = document.getElementById('rolesContainer');
+            const noResults = document.getElementById('noResults');
+            
+            if (filteredRoles.length === 0) {
+                container.innerHTML = '';
+                noResults.classList.remove('d-none');
+                return;
+            }
+            
+            noResults.classList.add('d-none');
+            container.innerHTML = filteredRoles.map((role, index) => {
+                const categoryInfo = getCategoryInfo(role.category);
+                return `
+                    <div class="col-lg-4 col-md-6">
+                        <div class="role-card fade-in" style="animation-delay: ${index * 0.1}s;">
+                            <div class="role-header">
+                                <h3 class="role-title" onclick="showRoleDetails('${role.role.replace(/'/g, "\\'")}')">${role.role}</h3>
+                                <span class="category-badge ${categoryInfo.class}">${categoryInfo.name}</span>
+                            </div>
+                            <div class="role-stats">
+                                <i class="fas fa-road me-2"></i>${role.roadmap.length} skills • 
+                                <i class="fas fa-certificate me-2"></i>${role.certificates.length} certs • 
+                                <i class="fab fa-youtube me-2"></i>${role.playlists.length} videos
+                            </div>
+                            <div class="skills-preview">
+                                <div class="skills-label">Key Skills:</div>
+                                <div>
+                                    ${role.roadmap.slice(0, 3).map(skill => 
+                                        `<span class="skill-tag">${skill}</span>`
+                                    ).join('')}
+                                    ${role.roadmap.length > 3 ? `<span class="skill-tag more">+${role.roadmap.length - 3} more</span>` : ''}
+                                </div>
+                            </div>
+                            <button class="view-details-btn" onclick="showRoleDetails('${role.role.replace(/'/g, "\\'")}')">
+                                Explore Career Path
+                                <i class="fas fa-arrow-right ms-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Show role details in modal
+        function showRoleDetails(roleName) {
+            const role = careerRoles.find(r => r.role === roleName);
+            if (!role) return;
+
+            const categoryInfo = getCategoryInfo(role.category);
+            
+            document.getElementById('roleModalTitle').innerHTML = `
+                <div class="d-flex align-items-center">
+                    <span class="me-3">${role.role}</span>
+                    <span class="category-badge ${categoryInfo.class}">${categoryInfo.name}</span>
+                </div>
+            `;
+            
+            document.getElementById('roleModalContent').innerHTML = `
+                <div class="roadmap-section mb-5">
+                    <h6><i class="fas fa-road me-2" style="color: #667eea;"></i>Complete Learning Roadmap</h6>
+                    <div class="row">
+                        ${role.roadmap.map((skill, index) => `
+                            <div class="col-md-6 mb-3">
+                                <div class="roadmap-item">
+                                    <div style="font-weight: 600; color: #667eea; margin-bottom: 0.25rem;">Step ${index + 1}</div>
+                                    <div>${skill}</div>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <h6><i class="fas fa-certificate me-2" style="color: #48bb78;"></i>Professional Certificates (${role.certificates.length})</h6>
+                        <div class="resource-section">
+                            ${role.certificates.length > 0 ? 
+                                role.certificates.map(cert => `
+                                    <a href="${cert.link}" target="_blank" class="resource-link">
+                                        <i class="fas fa-external-link-alt me-3"></i>
+                                        <span>${cert.title}</span>
+                                    </a>
+                                `).join('') : 
+                                '<div style="text-align: center; padding: 2rem; color: var(--text-secondary);">No certificates available yet</div>'
+                            }
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <h6><i class="fab fa-youtube me-2" style="color: #ed8936;"></i>Learning Videos (${role.playlists.length})</h6>
+                        <div class="resource-section">
+                            ${role.playlists.length > 0 ? 
+                                role.playlists.map(playlist => `
+                                    <a href="${playlist.link}" target="_blank" class="resource-link">
+                                        <i class="fas fa-play me-3"></i>
+                                        <span>${playlist.title}</span>
+                                    </a>
+                                `).join('') : 
+                                '<div style="text-align: center; padding: 2rem; color: var(--text-secondary);">No video playlists available yet</div>'
+                            }
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            new bootstrap.Modal(document.getElementById('roleModal')).show();
+        }
+
+        // Search functionality
+        function setupSearch() {
+            const searchInput = document.getElementById('searchInput');
+            searchInput.addEventListener('input', (e) => {
+                const searchTerm = e.target.value.toLowerCase();
+                filteredRoles = careerRoles.filter(role => 
+                    role.role.toLowerCase().includes(searchTerm) ||
+                    role.roadmap.some(skill => skill.toLowerCase().includes(searchTerm)) ||
+                    role.category.toLowerCase().includes(searchTerm)
+                );
+                renderRoles();
+            });
+        }
+
+        // Filter functionality
+        function setupFilters() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            filterButtons.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    // Update active button
+                    filterButtons.forEach(b => b.classList.remove('active'));
+                    e.target.classList.add('active');
+
+                    const category = e.target.dataset.category;
+                    
+                    if (category === 'all') {
+                        filteredRoles = [...careerRoles];
+                    } else {
+                        filteredRoles = careerRoles.filter(role => 
+                            role.category === category
+                        );
+                    }
+                    
+                    renderRoles();
+                    
+                    // Clear search when filtering
+                    document.getElementById('searchInput').value = '';
+                });
+            });
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', () => {
+            loadRolesData();
+            setupSearch();
+            setupFilters();
+        });
+    </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Roles Explorer - AI Career Readiness Platform</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --success-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --warning-gradient: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            --info-gradient: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            --dark-gradient: linear-gradient(135deg, #434343 0%, #000000 100%);
+            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --card-hover-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            --border-radius: 16px;
+            --text-primary: #2d3748;
+            --text-secondary: #718096;
+            --background: #f7fafc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--background);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Animated Background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            z-index: -1;
+            opacity: 0.05;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Navigation */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border: none;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+            padding: 1rem 0;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            color: var(--text-primary) !important;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 3px;
+            background: var(--primary-gradient);
+            border-radius: 2px;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: var(--primary-gradient);
+            color: white;
+            padding: 5rem 0 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="80" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="60" r="1" fill="rgba(255,255,255,0.1)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            margin-top: -3rem;
+            position: relative;
+            z-index: 3;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 2rem 1.5rem;
+            text-align: center;
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(20px);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--card-hover-shadow);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 0.9rem;
+        }
+
+        /* Search Section */
+        .search-section {
+            padding: 4rem 0;
+        }
+
+        .search-container {
+            position: relative;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 1.25rem 1.5rem 1.25rem 4rem;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 50px;
+            background: white;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .search-box:focus {
+            box-shadow: var(--card-hover-shadow);
+            transform: translateY(-2px);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+        }
+
+        /* Category Filters */
+        .category-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 2rem;
+        }
+
+        .filter-btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            border: 2px solid transparent;
+            background: white;
+            color: var(--text-primary);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .filter-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .filter-btn.active {
+            background: var(--primary-gradient);
+            color: white;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        /* Role Cards */
+        .roles-grid {
+            padding: 2rem 0 4rem 0;
+        }
+
+        .role-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            height: 100%;
+            border: none;
+            box-shadow: var(--card-shadow);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+
+        .role-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--primary-gradient);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .role-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--card-hover-shadow);
+        }
+
+        .role-card:hover::before {
+            opacity: 1;
+        }
+
+        .role-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .role-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex-grow: 1;
+            margin-right: 1rem;
+        }
+
+        .role-title:hover {
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .category-badge {
+            font-size: 0.75rem;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .category-development { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
+        .category-data { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; }
+        .category-infrastructure { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); color: white; }
+        .category-security { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); color: white; }
+        .category-design { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); color: white; }
+        .category-emerging { background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); color: #333; }
+
+        .role-stats {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .skills-preview {
+            margin-bottom: 2rem;
+        }
+
+        .skills-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+        }
+
+        .skill-tag {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: #f7fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--text-primary);
+            margin: 0.25rem 0.25rem 0.25rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: #e2e8f0;
+            transform: translateY(-1px);
+        }
+
+        .skill-tag.more {
+            background: var(--primary-gradient);
+            color: white;
+            border: none;
+        }
+
+        .view-details-btn {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 50px;
+            background: var(--primary-gradient);
+            color: white;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .view-details-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .view-details-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .view-details-btn:hover::after {
+            left: 100%;
+        }
+
+        /* Modal Styles */
+        .modal-content {
+            border: none;
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-hover-shadow);
+        }
+
+        .modal-header {
+            border-bottom: 1px solid #e2e8f0;
+            padding: 2rem 2rem 1rem 2rem;
+        }
+
+        .modal-title {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .modal-body {
+            padding: 1rem 2rem 2rem 2rem;
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+
+        .roadmap-section h6 {
+            color: var(--text-primary);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .roadmap-item {
+            background: linear-gradient(135deg, #f8f9ff 0%, #f0f4ff 100%);
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 1rem 1.25rem;
+            margin-bottom: 0.75rem;
+            transition: all 0.3s ease;
+        }
+
+        .roadmap-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .resource-section {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+
+        .resource-link {
+            display: block;
+            padding: 1rem;
+            color: var(--text-primary);
+            text-decoration: none;
+            border-bottom: 1px solid #dee2e6;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+        }
+
+        .resource-link:hover {
+            background: white;
+            color: #667eea;
+            transform: translateX(5px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .resource-link:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        /* Loading and Empty States */
+        .loading-spinner {
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        .loading-spinner .spinner-border {
+            width: 3rem;
+            height: 3rem;
+            border-width: 0.3em;
+            color: #667eea;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-secondary);
+        }
+
+        .no-results i {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: white;
+            border-top: 1px solid #e2e8f0;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .role-card {
+                padding: 1.5rem;
+            }
+            
+            .modal-header,
+            .modal-body {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Smooth Animations */
+        .fade-in {
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg"></div>
+
+    <!-- Navigation -->
+  
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-content text-center fade-in">
+                <h1 class="hero-title">Discover Your Perfect <br><span style="color: #fff;">Career Path</span></h1>
+                <p class="hero-subtitle">Explore comprehensive career roadmaps, certifications, and learning resources tailored to help you succeed in the tech industry</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="row g-4 fade-in">
+                <div class="col-md-4">
+                    <div class="stat-card">
+                        <span class="stat-number" data-count="33">33+</span>
+                        <div class="stat-label">Career Roles</div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="stat-card">
+                        <span class="stat-number" data-count="101">101+</span>
+                        <div class="stat-label">Learning Resources</div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="stat-card">
+                        <span class="stat-number" data-count="95">95%</span>
+                        <div class="stat-label">Success Rate</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search and Filter Section -->
+    <section class="search-section">
+        <div class="container">
+            <div class="search-container fade-in">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" id="searchInput" class="search-box" placeholder="Search for your dream career role..." />
+            </div>
+            
+            <div class="category-filters fade-in">
+                <button class="filter-btn active" data-category="all">All Roles</button>
+                <button class="filter-btn" data-category="development">Development</button>
+                <button class="filter-btn" data-category="data">Data & AI</button>
+                <button class="filter-btn" data-category="infrastructure">Infrastructure</button>
+                <button class="filter-btn" data-category="security">Security</button>
+                <button class="filter-btn" data-category="design">Design</button>
+                <button class="filter-btn" data-category="emerging">Emerging Tech</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Loading Spinner -->
+    <div id="loadingSpinner" class="loading-spinner">
+        <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <p class="mt-3" style="color: var(--text-secondary); font-weight: 500;">Loading career opportunities...</p>
+    </div>
+
+    <!-- Roles Grid -->
+    <section class="roles-grid">
+        <div class="container">
+            <div id="rolesContainer" class="row d-none">
+                <!-- Roles will be loaded here -->
+            </div>
+            
+            <div id="noResults" class="no-results d-none">
+                <i class="fas fa-search fa-4x mb-4"></i>
+                <h4>No careers found</h4>
+                <p>Try adjusting your search terms or explore different categories</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Role Details Modal -->
+    <div class="modal fade" id="roleModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="roleModalTitle"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="roleModalContent">
+                        <!-- Role details will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white border-top mt-5 py-4">
+        <div class="container text-center">
+            <p class="text-muted mb-0">© 2024 AI Career Readiness Platform. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Global variables
+        let careerRoles = [];
+        let filteredRoles = [];
+
+        // Load JSON data from external file
+        async function loadRolesData() {
+            try {
+                const response = await fetch('career-roles.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                careerRoles = await response.json();
+                filteredRoles = [...careerRoles];
+                
+                // Hide loading spinner and show content
+                document.getElementById('loadingSpinner').style.display = 'none';
+                document.getElementById('rolesContainer').classList.remove('d-none');
+                
+                renderRoles();
+            } catch (error) {
+                console.error('Error loading career roles data:', error);
+                document.getElementById('loadingSpinner').innerHTML = `
+                    <div class="alert alert-danger">
+                        <h5>Error Loading Data</h5>
+                        <p>Failed to load career roles data. Please make sure the career-roles.json file is in the same directory as this HTML file.</p>
+                        <p><small>Error: ${error.message}</small></p>
+                    </div>
+                `;
+            }
+        }
+
+        // Get category display name and class
+        function getCategoryInfo(category) {
+            const categoryMap = {
+                'development': { name: 'Development', class: 'category-development' },
+                'data': { name: 'Data & AI', class: 'category-data' },
+                'infrastructure': { name: 'Infrastructure', class: 'category-infrastructure' },
+                'security': { name: 'Security', class: 'category-security' },
+                'design': { name: 'Design', class: 'category-design' },
+                'emerging': { name: 'Emerging', class: 'category-emerging' }
+            };
+            return categoryMap[category] || { name: category, class: '' };
+        }
+
+        // Render roles cards
+        function renderRoles() {
+            const container = document.getElementById('rolesContainer');
+            const noResults = document.getElementById('noResults');
+            
+            if (filteredRoles.length === 0) {
+                container.innerHTML = '';
+                noResults.classList.remove('d-none');
+                return;
+            }
+            
+            noResults.classList.add('d-none');
+            container.innerHTML = filteredRoles.map(role => {
+                const categoryInfo = getCategoryInfo(role.category);
+                return `
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card role-card h-100">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <h5 class="card-title role-title flex-grow-1" onclick="showRoleDetails('${role.role}')">${role.role}</h5>
+                                    <span class="badge category-badge ${categoryInfo.class}">${categoryInfo.name}</span>
+                                </div>
+                                <p class="text-muted small">${role.roadmap.length} skills • ${role.certificates.length} certificates • ${role.playlists.length} playlists</p>
+                                <div class="mb-3">
+                                    <small class="text-muted">Key Skills:</small>
+                                    <div class="mt-1">
+                                        ${role.roadmap.slice(0, 3).map(skill => 
+                                            `<span class="badge bg-light text-dark me-1 mb-1">${skill}</span>`
+                                        ).join('')}
+                                        ${role.roadmap.length > 3 ? `<span class="badge bg-secondary">+${role.roadmap.length - 3} more</span>` : ''}
+                                    </div>
+                                </div>
+                                <button class="btn btn-primary btn-sm w-100" onclick="showRoleDetails('${role.role}')">
+                                    View Details <i class="fas fa-arrow-right ms-1"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Show role details in modal
+        function showRoleDetails(roleName) {
+            const role = careerRoles.find(r => r.role === roleName);
+            if (!role) return;
+
+            const categoryInfo = getCategoryInfo(role.category);
+            
+            document.getElementById('roleModalTitle').innerHTML = `
+                ${role.role} 
+                <span class="badge category-badge ${categoryInfo.class} ms-2">${categoryInfo.name}</span>
+            `;
+            
+            document.getElementById('roleModalContent').innerHTML = `
+                <div class="mb-4">
+                    <h6><i class="fas fa-road text-primary me-2"></i>Learning Roadmap</h6>
+                    <div class="row">
+                        ${role.roadmap.map((skill, index) => `
+                            <div class="col-md-6 mb-2">
+                                <div class="roadmap-item">
+                                    <strong>${index + 1}.</strong> ${skill}
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+
+                <div class="row">
+    <!-- Certificates Section -->
+    <div class="col-md-6 mb-4">
+        <h6><i class="fas fa-certificate text-success me-2"></i>Certificates (${role.certificates.length})</h6>
+        <div class="border rounded p-3">
+            ${role.certificates.length > 0 ? 
+                role.certificates.map(cert => `
+                    <a href="${cert.link}" target="_blank" class="cert-link">
+                        <i class="fas fa-external-link-alt me-2"></i>${cert.title}
+                    </a>
+                `).join('') : 
+                '<p class="text-muted">No certificates available</p>'
+            }
+        </div>
+    </div>
+
+    <!-- Video Playlists Section -->
+    <div class="col-md-6 mb-4">
+        <h6><i class="fab fa-youtube text-danger me-2"></i>Video Playlists (${role.playlists.length})</h6>
+        <div class="border rounded p-3">
+            ${role.playlists.length > 0 ? 
+                role.playlists.map(playlist => `
+                    <a href="${playlist.link}" target="_blank" class="playlist-link">
+                        <i class="fas fa-play me-2"></i>${playlist.title}
+                    </a>
+                `).join('') : 
+                '<p class="text-muted">No playlists available</p>'
+            }
+        </div>
+    </div>
+</div>
+
+<style>
+    .cert-link,
+    .playlist-link {
+        display: block;   /* each link appears on a new line */
+        margin-bottom: 5px; /* spacing between links */
+    }
+</style>
+
+            `;
+
+            new bootstrap.Modal(document.getElementById('roleModal')).show();
+        }
+
+        // Search functionality
+        function setupSearch() {
+            const searchInput = document.getElementById('searchInput');
+            searchInput.addEventListener('input', (e) => {
+                const searchTerm = e.target.value.toLowerCase();
+                filteredRoles = careerRoles.filter(role => 
+                    role.role.toLowerCase().includes(searchTerm) ||
+                    role.roadmap.some(skill => skill.toLowerCase().includes(searchTerm)) ||
+                    role.category.toLowerCase().includes(searchTerm)
+                );
+                renderRoles();
+            });
+        }
+
+        // Filter functionality
+        function setupFilters() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            filterButtons.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    // Update active button
+                    filterButtons.forEach(b => b.classList.remove('active'));
+                    e.target.classList.add('active');
+
+                    const category = e.target.dataset.category;
+                    
+                    if (category === 'all') {
+                        filteredRoles = [...careerRoles];
+                    } else {
+                        filteredRoles = careerRoles.filter(role => 
+                            role.category === category
+                        );
+                    }
+                    
+                    renderRoles();
+                    
+                    // Clear search when filtering
+                    document.getElementById('searchInput').value = '';
+                });
+            });
+        }
+
+        <footer>
+        <div class="container text-center">
+            <p style="color: var(--text-secondary); font-weight: 500;">© 2024 Career Mentor Platform. Empowering your tech journey.</p>
+        </div>
+    </footer>
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', () => {
+            loadRolesData();
+            setupSearch();
+            setupFilters();
+        });
+    </script>
+</body>
+</html>

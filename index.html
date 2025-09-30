@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NextEdge</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+      
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+      
+      .gradient-bg {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      }
+      
+      .card-hover {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      
+      .card-hover:hover {
+        transform: translateY(-8px);
+      }
+      
+      .floating-icons {
+        animation: float 6s ease-in-out infinite;
+      }
+      
+      .floating-icons:nth-child(2) {
+        animation-delay: -2s;
+      }
+      
+      .floating-icons:nth-child(3) {
+        animation-delay: -4s;
+      }
+      
+      @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-20px); }
+      }
+      
+      .ripple {
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .ripple::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+        transition: left 0.5s;
+      }
+      
+      .ripple:hover::before {
+        left: 100%;
+      }
+      
+      .stats-card {
+        background: linear-gradient(145deg, #f8fafc, #e2e8f0);
+        box-shadow: 8px 8px 20px #d1d5db, -8px -8px 20px #ffffff;
+      }
+      
+      .feature-icon {
+        background: linear-gradient(145deg, #3b82f6, #1e40af);
+        box-shadow: 4px 4px 10px rgba(59, 130, 246, 0.3);
+      }
+    </style>
+  </head>
+  <body class="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 text-gray-800">
+    
+    <!-- Floating Background Elements -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none">
+      <div class="floating-icons absolute top-20 left-20 w-16 h-16 bg-blue-200 rounded-full opacity-20"></div>
+      <div class="floating-icons absolute top-40 right-32 w-12 h-12 bg-purple-200 rounded-full opacity-20"></div>
+      <div class="floating-icons absolute bottom-32 left-1/4 w-20 h-20 bg-indigo-200 rounded-full opacity-20"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="relative z-10 flex items-center justify-between px-8 py-6 bg-white/80 backdrop-blur-md border-b border-gray-200/50 shadow-sm">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center">
+          <span class="text-white font-bold text-lg">NE</span>
+        </div>
+        <h1 class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+          NextEdge
+        </h1>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative z-10 flex flex-col items-center text-center mt-20 px-6">
+      <div class="mb-6">
+        <h2 class="text-5xl font-bold mb-6 leading-tight">
+          India's First 
+          <span class="bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
+            Skill Gap Analyzer
+          </span>
+        </h2>
+        <p class="text-gray-600 max-w-2xl text-lg leading-relaxed">
+          Harness the power of AI to analyze your resume, explore career paths, and discover the skills you need to accelerate your professional growth.
+        </p>
+      </div>
+      
+      <!-- Stats Section -->
+    
+
+    <!-- Main Cards -->
+    <main class="relative z-10 flex-1 flex flex-col lg:flex-row gap-12 justify-center items-center mt-8 px-6 mb-20">
+      
+      <!-- Resume Analysis Card -->
+<div class="card-hover group relative bg-white/90 backdrop-blur-sm border border-gray-200 rounded-3xl p-10 w-full max-w-md cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-300"
+     onclick="location.href='resume.html'">
+  <div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent rounded-3xl"></div>
+  
+  <!-- ICON + TITLE side by side -->
+  <div class="flex items-center space-x-4 mb-6">
+    <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg">
+      <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+      </svg>
+    </div>
+    <h3 class="text-2xl font-bold group-hover:text-blue-600 transition-colors">
+      CareerLens
+    </h3>
+  </div>
+
+  <p class="text-gray-600 mb-6 leading-relaxed">
+    Upload your resume and get a comprehensive AI-powered analysis with personalized skill gap recommendations and career insights.
+  </p>
+  <button class="ripple w-full px-6 py-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-xl font-medium hover:from-blue-600 hover:to-blue-700 transition-all shadow-lg hover:shadow-xl flex items-center justify-center space-x-2">
+    <span>Start Analysis</span>
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+    </svg>
+  </button>
+</div>
+
+<!-- Role Explorer Card -->
+<div class="card-hover group relative bg-white/90 backdrop-blur-sm border border-gray-200 rounded-3xl p-10 w-full max-w-md cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-300"
+     onclick="location.href='role.html'">
+  <div class="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-transparent rounded-3xl"></div>
+  
+  <!-- ICON + TITLE side by side -->
+  <div class="flex items-center space-x-4 mb-6">
+    <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg">
+      <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 012 2v6a2 2 0 01-2 2H6a2 2 0 01-2-2V8a2 2 0 012-2V6z"></path>
+      </svg>
+    </div>
+    <h3 class="text-2xl font-bold group-hover:text-purple-600 transition-colors">
+      Role Explorer
+    </h3>
+  </div>
+
+  <p class="text-gray-600 mb-6 leading-relaxed">
+    Discover career opportunities, explore required skills, salary ranges, and get personalized learning paths tailored to your goals.
+  </p>
+  <button class="ripple w-full px-6 py-3 bg-gradient-to-r from-purple-500 to-purple-600 text-white rounded-xl font-medium hover:from-purple-600 hover:to-purple-700 transition-all shadow-lg hover:shadow-xl flex items-center justify-center space-x-2">
+    <span>Explore Roles</span>
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+    </svg>
+  </button>
+</div>
+
+<!-- Skill Checker Card -->
+<div class="card-hover group relative bg-white/90 backdrop-blur-sm border border-gray-200 rounded-3xl p-10 w-full max-w-md cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-300"
+     onclick="location.href='interviewer.html'">
+  <div class="absolute inset-0 bg-gradient-to-br from-green-500/5 to-transparent rounded-3xl"></div>
+  
+  <!-- ICON + TITLE side by side -->
+  <div class="flex items-center space-x-4 mb-6">
+    <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-teal-600 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg">
+      <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+      </svg>
+    </div>
+    <h3 class="text-2xl font-bold group-hover:text-green-600 transition-colors">
+      Skill Checker
+    </h3>
+  </div>
+
+  <p class="text-gray-600 mb-6 leading-relaxed">
+    Test your skills through AI-powered interview questions based on your resume. Get feedback to improve and excel in your career journey.
+  </p>
+  <button class="ripple w-full px-6 py-3 bg-gradient-to-r from-green-500 to-teal-600 text-white rounded-xl font-medium hover:from-green-600 hover:to-teal-700 transition-all shadow-lg hover:shadow-xl flex items-center justify-center space-x-2">
+    <span>Start Skill Check</span>
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+    </svg>
+  </button>
+</div>
+
+    </main>
+
+    <!-- Features Section -->
+    <section class="relative z-10 px-8 py-16 bg-white/50 backdrop-blur-sm">
+      <div class="max-w-6xl mx-auto">
+        <h3 class="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
+          Why Choose NextEdge?
+        </h3>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="text-center p-6">
+            <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl mx-auto mb-4 flex items-center justify-center">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+            </div>
+            <h4 class="font-semibold mb-2">AI-Powered Insights</h4>
+            <p class="text-gray-600 text-sm">Advanced algorithms analyze your profile to provide personalized recommendations.</p>
+          </div>
+          <div class="text-center p-6">
+            <div class="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-600 rounded-xl mx-auto mb-4 flex items-center justify-center">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+              </svg>
+            </div>
+            <h4 class="font-semibold mb-2">Real-Time Data</h4>
+            <p class="text-gray-600 text-sm">Stay updated with the latest market trends and salary information.</p>
+          </div>
+          <div class="text-center p-6">
+            <div class="w-12 h-12 bg-gradient-to-br from-teal-500 to-cyan-600 rounded-xl mx-auto mb-4 flex items-center justify-center">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+              </svg>
+            </div>
+            <h4 class="font-semibold mb-2">Learning Paths</h4>
+            <p class="text-gray-600 text-sm">Get curated learning resources to bridge your skill gaps efficiently.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sessions Panel -->
+    <section id="sessionsPanel" class="hidden relative z-10 px-8 py-8 bg-gray-50/80 backdrop-blur-sm border-t border-gray-200">
+      <div class="max-w-4xl mx-auto">
+        <div class="flex items-center justify-between mb-6">
+          <h4 class="text-xl font-semibold text-gray-800">Your Recent Sessions</h4>
+          <button id="closeSessions" class="p-2 hover:bg-gray-200 rounded-lg transition">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+        <div id="sessionsList" class="grid gap-4 md:grid-cols-2 lg:grid-cols-3"></div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="relative z-10 text-center text-gray-500 py-8 bg-white/30 backdrop-blur-sm">
+      <div class="flex items-center justify-center space-x-2 text-sm">
+        <span>Made by Innov8ors</span>
+      </div>
+      <p class="text-xs mt-2">Empowering careers through intelligent insights</p>
+    </footer>
+
+    <script>
+      const sessionsBtn = document.getElementById("sessionsBtn");
+      const sessionsPanel = document.getElementById("sessionsPanel");
+      const sessionsList = document.getElementById("sessionsList");
+      const closeSessions = document.getElementById("closeSessions");
+
+      function toggleSessions() {
+        const sessions = [
+          { domain: "Software Engineering", subdomain: "Frontend Development", readiness: 85, date: "2024-01-15" },
+          { domain: "Data Science", subdomain: "Machine Learning", readiness: 72, date: "2024-01-12" },
+          { domain: "Product Management", subdomain: "Strategy", readiness: 90, date: "2024-01-10" }
+        ];
+        
+        if (sessions.length > 0) {
+          sessionsList.innerHTML = sessions.map(s => `
+            <div class='bg-white rounded-xl p-6 border border-gray-200 hover:shadow-md transition-shadow'>
+              <div class="flex items-center justify-between mb-3">
+                <div class="text-sm text-gray-500">${s.date}</div>
+                <div class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-xs font-medium">
+                  ${s.readiness}% Ready
+                </div>
+              </div>
+              <h5 class="font-semibold text-gray-800 mb-1">${s.domain}</h5>
+              <p class="text-sm text-gray-600">${s.subdomain}</p>
+              <div class="mt-4 w-full bg-gray-200 rounded-full h-2">
+                <div class="bg-gradient-to-r from-blue-500 to-purple-500 h-2 rounded-full transition-all duration-500" style="width: ${s.readiness}%"></div>
+              </div>
+            </div>
+          `).join("");
+        } else {
+          sessionsList.innerHTML = `
+            <div class='col-span-full text-center py-12'>
+              <svg class="w-16 h-16 mx-auto text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+              </svg>
+              <p class="text-gray-500 text-lg">No saved sessions yet</p>
+              <p class="text-gray-400 text-sm">Start analyzing your resume or exploring roles to see your progress here</p>
+            </div>
+          `;
+        }
+        
+        sessionsPanel.classList.toggle("hidden");
+      }
+
+      sessionsBtn.addEventListener("click", toggleSessions);
+      closeSessions.addEventListener("click", toggleSessions);
+
+      document.addEventListener("click", (e) => {
+        if (!sessionsPanel.contains(e.target) && !sessionsBtn.contains(e.target) && !sessionsPanel.classList.contains("hidden")) {
+          sessionsPanel.classList.add("hidden");
+        }
+      });
+
+      document.addEventListener("DOMContentLoaded", () => {
+        document.documentElement.style.scrollBehavior = 'smooth';
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.style.opacity = '1';
+              entry.target.style.transform = 'translateY(0)';
+            }
+          });
+        }, observerOptions);
+        document.querySelectorAll('main > div, section > div').forEach(el => {
+          el.style.opacity = '0';
+          el.style.transform = 'translateY(20px)';
+          el.style.transition = 'all 0.6s ease-out';
+          observer.observe(el);
+        });
+      });
+    </script>
+  </body>
+</html>

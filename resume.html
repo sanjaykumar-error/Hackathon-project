@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CareerLens (Resume Scanning) - AI-Powered Career Assessment</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ["Inter", "system-ui", "sans-serif"] },
+          colors: {
+            light: { bg: '#f9fafb', card: '#ffffff', border: '#e5e7eb' }
+          },
+          animation: {
+            fadeIn: 'fadeIn 0.7s ease-out forwards',
+            fadeUp: 'fadeUp 0.7s ease-out forwards'
+          },
+          keyframes: {
+            fadeIn: { '0%': { opacity: 0 }, '100%': { opacity: 1 } },
+            fadeUp: { '0%': { opacity: 0, transform: 'translateY(20px)' }, '100%': { opacity: 1, transform: 'translateY(0)' } }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-gradient-to-br from-gray-50 to-gray-100 text-gray-900 font-sans min-h-screen">
+  <div class="container mx-auto px-4 py-12 max-w-6xl">
+
+    <!-- Header -->
+    <div class="text-center mb-16 animate-fadeIn">
+      <h1 class="text-6xl font-extrabold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4 tracking-tight">
+        Resume Analyzer
+      </h1>
+      <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+        AI-powered career readiness assessment — analyze your resume, discover missing skills, and boost your professional journey.
+      </p>
+    </div>
+
+    <!-- Upload Section -->
+    <div class="bg-light-card shadow-xl rounded-3xl p-8 mb-12 border border-light-border hover:shadow-2xl transition-all duration-300 animate-fadeUp">
+      <h2 class="text-2xl font-bold mb-6 flex items-center text-gray-900">
+        <svg class="w-7 h-7 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+        </svg>
+        Upload Resume
+      </h2>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- File Upload -->
+        <div class="space-y-2">
+          <label class="block text-sm font-medium text-gray-700">Select Resume File</label>
+          <input type="file" id="resumeFile" accept=".pdf,.docx,.txt"
+            class="w-full px-3 py-3 bg-gray-50 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition 
+                   file:mr-4 file:py-2.5 file:px-5 file:rounded-xl file:border-0 file:bg-blue-600 file:text-white hover:file:bg-blue-700 cursor-pointer">
+        </div>
+
+        <!-- Domain Selector -->
+        <div class="space-y-2">
+          <label class="block text-sm font-medium text-gray-700">Career Domain</label>
+          <select id="careerDomain" class="w-full px-3 py-3 bg-gray-50 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition">
+            <option value="">Select Domain</option>
+            <option value="frontend">Frontend Development</option>
+            <option value="backend">Backend Development</option>
+            <option value="fullstack">Full Stack Development</option>
+            <option value="mobile_dev">Mobile App Development</option>
+            <option value="game_dev">Game Development</option>
+            <option value="blockchain">Blockchain Development</option>
+            <option value="embedded_systems">Embedded Systems / IoT</option>
+            <option value="data_science">Data Science</option>
+            <option value="data_engineering">Data Engineering</option>
+            <option value="ai_ml">AI / Machine Learning</option>
+            <option value="nlp">Natural Language Processing</option>
+            <option value="computer_vision">Computer Vision</option>
+            <option value="cloud_computing">Cloud Computing</option>
+            <option value="devops">DevOps & Infrastructure</option>
+            <option value="cybersecurity">Cybersecurity</option>
+            <option value="systems_admin">Systems Administration</option>
+            <option value="ui_ux">UI / UX Design</option>
+            <option value="product_mgmt">Product Management</option>
+            <option value="project_mgmt">Project Management</option>
+            <option value="digital_marketing">Digital Marketing</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Analyze Button -->
+      <button id="analyzeBtn" disabled
+        class="mt-10 w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 disabled:from-gray-300 disabled:to-gray-400 disabled:cursor-not-allowed text-white font-semibold py-4 px-8 rounded-2xl shadow-lg transition transform hover:scale-105 active:scale-95">
+        <span id="analyzeText">Analyze Resume</span>
+        <div id="loadingSpinner" class="hidden inline-block ml-3">
+          <svg class="animate-spin h-5 w-5" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"/>
+          </svg>
+        </div>
+      </button>
+    </div>
+
+    <!-- Resume Preview -->
+    <div id="resumePreview" class="hidden bg-light-card shadow-lg rounded-3xl p-6 mb-12 border border-light-border animate-fadeUp">
+      <h3 class="text-xl font-semibold mb-4 text-green-600">Resume Preview</h3>
+      <div id="resumeText" class="bg-gray-50 p-5 rounded-xl max-h-52 overflow-y-auto text-sm text-gray-700 whitespace-pre-wrap border border-gray-200"></div>
+    </div>
+
+    <!-- Results Section -->
+    <div id="resultsSection" class="hidden space-y-8">
+
+      <!-- Mentor Feedback -->
+      <div class="bg-light-card shadow-lg rounded-3xl p-6 border border-light-border animate-fadeUp">
+        <h3 class="text-xl font-semibold mb-4 flex items-center text-gray-900">
+          <svg class="w-6 h-6 mr-2 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+          </svg>
+          Mentor Feedback
+        </h3>
+        <div id="mentorMessage" class="text-gray-700 leading-relaxed"></div>
+      </div>
+
+      <!-- Career Readiness -->
+      <div class="bg-light-card shadow-lg rounded-3xl p-6 border border-light-border animate-fadeUp">
+        <h3 class="text-xl font-semibold mb-4 flex items-center text-gray-900">
+          <svg class="w-6 h-6 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+          </svg>
+          Career Readiness
+        </h3>
+        <div class="flex items-center mb-4">
+          <span id="readinessPercent" class="text-4xl font-extrabold text-blue-600">0%</span>
+          <span class="ml-2 text-gray-600 text-lg">ready for your target role</span>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-4">
+          <div id="readinessBar" class="bg-gradient-to-r from-blue-500 to-green-500 h-4 rounded-full transition-all duration-1000 ease-out" style="width: 0%"></div>
+        </div>
+      </div>
+
+      <!-- Skills Grid -->
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-light-card shadow-lg rounded-3xl p-6 border border-light-border animate-fadeUp">
+          <h3 class="text-xl font-semibold mb-4 flex items-center text-green-600">
+            <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+            </svg>
+            Skills Found
+          </h3>
+          <div id="presentSkills" class="flex flex-wrap gap-3"></div>
+        </div>
+
+        <div class="bg-light-card shadow-lg rounded-3xl p-6 border border-light-border animate-fadeUp">
+          <h3 class="text-xl font-semibold mb-4 flex items-center text-red-600">
+            <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+            Skills to Develop
+          </h3>
+          <div id="missingSkills" class="flex flex-wrap gap-3"></div>
+        </div>
+      </div>
+
+      
+    </div>
+
+    <!-- Error Message -->
+    <div id="errorMessage" class="hidden bg-red-50 border border-red-300 text-red-700 px-5 py-4 rounded-xl mb-12 shadow-sm animate-fadeUp">
+      <div class="flex items-center">
+        <svg class="w-6 h-6 mr-2 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+        </svg>
+        <span id="errorText"></span>
+      </div>
+    </div>
+
+    <div id="savedSessions" class="mt-12"></div>
+  </div>
+
+  <script src="resume.js"></script>
+</body>
+</html>

@@ -1,0 +1,498 @@
+[
+  {
+    "role": "Web Developer",
+    "category": "development",
+    "roadmap": ["HTML & CSS Fundamentals", "JavaScript ES6+", "Responsive Web Design", "Version Control (Git)", "CSS Frameworks (Bootstrap/Tailwind)", "JavaScript Frameworks (React/Vue/Angular)", "APIs & AJAX", "Web Performance Optimization", "Browser Developer Tools", "Basic SEO"],
+    "certificates": [
+      {"title": "FreeCodeCamp Responsive Web Design", "link": "https://www.freecodecamp.org/learn/2022/responsive-web-design/"},
+      {"title": "FreeCodeCamp JavaScript Algorithms and Data Structures", "link": "https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures-v8/"},
+      {"title": "Google UX Design Professional Certificate", "link": "https://www.coursera.org/professional-certificates/google-ux-design"}
+    ],
+    "playlists": [
+      {"title": "HTML Full Course - Build a Website Tutorial", "link": "https://www.youtube.com/watch?v=pQN-pnXPaVg"},
+      {"title": "JavaScript Crash Course For Beginners", "link": "https://www.youtube.com/watch?v=hdI2bqOjy3c"},
+      {"title": "CSS Grid Course", "link": "https://www.youtube.com/watch?v=jV8B24rSN5o"}
+    ]
+  },
+  {
+    "role": "Frontend Developer",
+    "category": "development",
+    "roadmap": ["HTML5 & CSS3", "JavaScript & DOM Manipulation", "CSS Preprocessors (Sass/Less)", "Build Tools (Webpack/Vite)", "Package Managers (npm/yarn)", "JavaScript Frameworks (React/Vue/Angular)", "State Management (Redux/Vuex)", "Testing (Jest/Cypress)", "TypeScript", "Performance Optimization"],
+    "certificates": [
+      {"title": "FreeCodeCamp Front End Development Libraries", "link": "https://www.freecodecamp.org/learn/front-end-development-libraries/"},
+      {"title": "Meta Frontend Developer Professional Certificate", "link": "https://www.coursera.org/professional-certificates/meta-front-end-developer"},
+      {"title": "IBM Frontend Developer Professional Certificate", "link": "https://www.coursera.org/professional-certificates/ibm-frontend-developer"}
+    ],
+    "playlists": [
+      {"title": "React JS Full Course", "link": "https://www.youtube.com/watch?v=bMknfKXIFA8"},
+      {"title": "Vue.js Course for Beginners", "link": "https://www.youtube.com/watch?v=FXpIoQ_rT_c"},
+      {"title": "TypeScript Crash Course", "link": "https://www.youtube.com/watch?v=BCg4U1FzODs"}
+    ]
+  },
+  {
+    "role": "Backend Developer",
+    "category": "development",
+    "roadmap": ["Programming Language (Python/Java/Node.js)", "Databases (SQL & NoSQL)", "RESTful APIs", "Web Frameworks (Express/Django/Spring)", "Authentication & Authorization", "Caching (Redis)", "Message Queues", "Microservices Architecture", "Testing & TDD", "Server Administration"],
+    "certificates": [
+      {"title": "FreeCodeCamp Back End Development and APIs", "link": "https://www.freecodecamp.org/learn/back-end-development-and-apis/"},
+      {"title": "Meta Backend Developer Professional Certificate", "link": "https://www.coursera.org/professional-certificates/meta-back-end-developer"},
+      {"title": "Google IT Automation with Python", "link": "https://www.coursera.org/professional-certificates/google-it-automation"}
+    ],
+    "playlists": [
+      {"title": "Node.js Crash Course", "link": "https://www.youtube.com/watch?v=fBNz5xF-Kx4"},
+      {"title": "Python Django Tutorial for Beginners", "link": "https://www.youtube.com/watch?v=rHux0gMZ3Eg"},
+      {"title": "SQL Tutorial - Full Database Course for Beginners", "link": "https://www.youtube.com/watch?v=HXV3zeQKqGY"}
+    ]
+  },
+  {
+    "role": "Full Stack Developer",
+    "category": "development",
+    "roadmap": ["Frontend Technologies (HTML/CSS/JavaScript)", "Backend Programming (Node.js/Python/Java)", "Database Management (SQL/NoSQL)", "REST APIs & GraphQL", "Version Control (Git)", "DevOps Basics (Docker/CI/CD)", "Cloud Services (AWS/Azure)", "Testing Frameworks", "Project Management", "System Design"],
+    "certificates": [
+      {"title": "FreeCodeCamp Full Stack Developer", "link": "https://www.freecodecamp.org/learn/full-stack-developer/"},
+      {"title": "IBM Full Stack Software Developer Professional Certificate", "link": "https://www.coursera.org/professional-certificates/ibm-full-stack-cloud-developer"},
+      {"title": "Meta Full Stack Engineer Professional Certificate", "link": "https://www.coursera.org/professional-certificates/meta-full-stack-engineer"}
+    ],
+    "playlists": [
+      {"title": "Full Stack Web Development for Beginners", "link": "https://www.youtube.com/watch?v=nu_pCVPKzTk"},
+      {"title": "MERN Stack Tutorial", "link": "https://www.youtube.com/watch?v=7CqJlxBYj-M"},
+      {"title": "Full Stack Development Course", "link": "https://www.youtube.com/watch?v=Oc9b1hWCyrc"}
+    ]
+  },
+  {
+    "role": "Mobile App Developer (Android/iOS)",
+    "category": "development",
+    "roadmap": ["Mobile Development Fundamentals", "Platform-Specific Languages (Java/Kotlin/Swift)", "Cross-Platform Frameworks (React Native/Flutter)", "UI/UX Design for Mobile", "Mobile Database Management", "API Integration", "App Store Guidelines", "Testing & Debugging", "Performance Optimization", "Mobile Security"],
+    "certificates": [
+      {"title": "Google Associate Android Developer", "link": "https://developers.google.com/certification/associate-android-developer"},
+      {"title": "iOS App Development with Swift", "link": "https://www.coursera.org/specializations/app-development"},
+      {"title": "Flutter Development Bootcamp", "link": "https://www.udemy.com/course/flutter-bootcamp-with-dart/"}
+    ],
+    "playlists": [
+      {"title": "Android Development Full Course", "link": "https://www.youtube.com/watch?v=fis26HvvDII"},
+      {"title": "iOS Swift Programming Tutorial", "link": "https://www.youtube.com/watch?v=comQ1-x2a1Q"},
+      {"title": "Flutter Course for Beginners", "link": "https://www.youtube.com/watch?v=1ukSR1GRtMU"}
+    ]
+  },
+  {
+    "role": "Data Scientist",
+    "category": "data",
+    "roadmap": ["Python Programming", "Statistics & Probability", "Data Manipulation (Pandas/NumPy)", "Data Visualization (Matplotlib/Seaborn)", "Machine Learning (Scikit-learn)", "SQL & Database Management", "Big Data Tools (Spark)", "Deep Learning (TensorFlow/PyTorch)", "Business Intelligence", "Communication Skills"],
+    "certificates": [
+      {"title": "IBM Data Science Professional Certificate", "link": "https://www.coursera.org/professional-certificates/ibm-data-science"},
+      {"title": "Google Data Analytics Professional Certificate", "link": "https://www.coursera.org/professional-certificates/google-data-analytics"},
+      {"title": "FreeCodeCamp Data Analysis with Python", "link": "https://www.freecodecamp.org/learn/data-analysis-with-python/"}
+    ],
+    "playlists": [
+      {"title": "Python for Data Science Course", "link": "https://www.youtube.com/watch?v=LHBE6Q9XlzI"},
+      {"title": "Machine Learning Course - CS229 Stanford", "link": "https://www.youtube.com/watch?v=jGwO_UgTS7I"},
+      {"title": "Data Science Full Course", "link": "https://www.youtube.com/watch?v=ua-CiDNNj30"}
+    ]
+  },
+  {
+    "role": "Machine Learning Engineer",
+    "category": "data",
+    "roadmap": ["Python/R Programming", "Mathematics (Linear Algebra, Statistics)", "Machine Learning Algorithms", "Data Preprocessing & Feature Engineering", "Model Training & Evaluation", "MLOps & Model Deployment", "Cloud ML Services (AWS/GCP/Azure)", "Docker & Containerization", "API Development", "Monitoring & Maintenance"],
+    "certificates": [
+      {"title": "IBM Machine Learning Professional Certificate", "link": "https://www.coursera.org/professional-certificates/ibm-machine-learning"},
+      {"title": "Google Machine Learning Engineer Professional Certificate", "link": "https://www.coursera.org/professional-certificates/preparing-for-google-cloud-machine-learning-engineer-professional-certificate"},
+      {"title": "Stanford Machine Learning Course", "link": "https://www.coursera.org/learn/machine-learning"}
+    ],
+    "playlists": [
+      {"title": "Machine Learning Explained", "link": "https://www.youtube.com/watch?v=ukzFI9rgwfU"},
+      {"title": "MLOps Course", "link": "https://www.youtube.com/watch?v=NGBCliyQVJ0"},
+      {"title": "TensorFlow 2.0 Complete Course", "link": "https://www.youtube.com/watch?v=tPYj3fFJGjk"}
+    ]
+  },
+  {
+    "role": "AI Engineer",
+    "category": "data",
+    "roadmap": ["Python Programming", "Machine Learning Fundamentals", "Deep Learning & Neural Networks", "Natural Language Processing", "Computer Vision", "AI Frameworks (TensorFlow/PyTorch)", "MLOps & Model Deployment", "Large Language Models", "Reinforcement Learning", "Ethics in AI"],
+    "certificates": [
+      {"title": "IBM AI Developer Professional Certificate", "link": "https://www.coursera.org/professional-certificates/applied-artifical-intelligence-ibm-watson-ai"},
+      {"title": "Stanford AI for Everyone", "link": "https://www.coursera.org/learn/ai-for-everyone"},
+      {"title": "DeepLearning.AI TensorFlow Developer Professional Certificate", "link": "https://www.coursera.org/professional-certificates/tensorflow-in-practice"}
+    ],
+    "playlists": [
+      {"title": "Artificial Intelligence Full Course", "link": "https://www.youtube.com/watch?v=JMUxmLyrhSk"},
+      {"title": "PyTorch for Deep Learning Full Course", "link": "https://www.youtube.com/watch?v=V_xro1bcAuA"},
+      {"title": "Natural Language Processing with Python", "link": "https://www.youtube.com/watch?v=xvqsFTUsOmc"}
+    ]
+  },
+  {
+    "role": "Deep Learning Engineer",
+    "category": "data",
+    "roadmap": ["Python & Advanced Mathematics", "Neural Network Fundamentals", "Deep Learning Frameworks (TensorFlow/PyTorch)", "Convolutional Neural Networks (CNNs)", "Recurrent Neural Networks (RNNs)", "Transformers & Attention Mechanisms", "Generative Models (GANs, VAEs)", "Model Optimization & Deployment", "GPU Computing (CUDA)", "Research & Paper Implementation"],
+    "certificates": [
+      {"title": "DeepLearning.AI Deep Learning Specialization", "link": "https://www.coursera.org/specializations/deep-learning"},
+      {"title": "CS231n: Convolutional Neural Networks for Visual Recognition", "link": "https://www.coursera.org/learn/convolutional-neural-networks"},
+      {"title": "IBM Deep Learning Professional Certificate", "link": "https://www.coursera.org/professional-certificates/ibm-deep-learning"}
+    ],
+    "playlists": [
+      {"title": "Deep Learning Crash Course", "link": "https://www.youtube.com/watch?v=VyWAvY2CF9c"},
+      {"title": "Neural Networks Explained", "link": "https://www.youtube.com/watch?v=aircAruvnKk"},
+      {"title": "PyTorch Deep Learning Course", "link": "https://www.youtube.com/watch?v=c36lUUr864M"}
+    ]
+  },
+  {
+    "role": "NLP Engineer",
+    "category": "data",
+    "roadmap": ["Python Programming", "Linguistics Fundamentals", "Text Processing & Tokenization", "Statistical NLP Methods", "Machine Learning for Text", "Deep Learning for NLP", "Transformer Models (BERT, GPT)", "Named Entity Recognition", "Sentiment Analysis", "Large Language Models"],
+    "certificates": [
+      {"title": "DeepLearning.AI Natural Language Processing Specialization", "link": "https://www.coursera.org/specializations/natural-language-processing"},
+      {"title": "IBM Applied AI Professional Certificate", "link": "https://www.coursera.org/professional-certificates/applied-artifical-intelligence-ibm-watson-ai"},
+      {"title": "Stanford CS224n: Natural Language Processing with Deep Learning", "link": "https://www.coursera.org/learn/language-processing"}
+    ],
+    "playlists": [
+      {"title": "Natural Language Processing Course", "link": "https://www.youtube.com/watch?v=fNxaJsNG3-s"},
+      {"title": "NLP with Python and NLTK", "link": "https://www.youtube.com/watch?v=FLZvOKSCkxY"},
+      {"title": "Transformer Models Explained", "link": "https://www.youtube.com/watch?v=kCc8FmEb1nY"}
+    ]
+  },
+  {
+    "role": "Computer Vision Engineer",
+    "category": "data",
+    "roadmap": ["Python & OpenCV", "Image Processing Fundamentals", "Convolutional Neural Networks", "Object Detection & Recognition", "Image Segmentation", "Feature Extraction & Matching", "3D Computer Vision", "Deep Learning Frameworks", "Camera Calibration", "Real-time Vision Systems"],
+    "certificates": [
+      {"title": "DeepLearning.AI TensorFlow Developer Professional Certificate", "link": "https://www.coursera.org/professional-certificates/tensorflow-in-practice"},
+      {"title": "IBM Computer Vision and Image Processing", "link": "https://www.coursera.org/learn/computer-vision-basics"},
+      {"title": "Introduction to Computer Vision and Image Processing", "link": "https://www.coursera.org/learn/introduction-computer-vision-watson-opencv"}
+    ],
+    "playlists": [
+      {"title": "Computer Vision Course", "link": "https://www.youtube.com/watch?v=01sAkU_NvOY"},
+      {"title": "OpenCV Python Tutorial", "link": "https://www.youtube.com/watch?v=oAuWwRahc9Q"},
+      {"title": "Deep Learning for Computer Vision", "link": "https://www.youtube.com/watch?v=dJYGatp4SvA"}
+    ]
+  },
+  {
+    "role": "Data Engineer",
+    "category": "data",
+    "roadmap": ["Programming Languages (Python/Java/Scala)", "SQL & Database Design", "ETL/ELT Processes", "Data Warehousing", "Big Data Technologies (Hadoop/Spark)", "Cloud Platforms (AWS/GCP/Azure)", "Data Pipeline Orchestration", "Stream Processing", "Data Quality & Governance", "Distributed Systems"],
+    "certificates": [
+      {"title": "Google Cloud Professional Data Engineer", "link": "https://www.coursera.org/professional-certificates/gcp-data-engineering"},
+      {"title": "IBM Data Engineering Professional Certificate", "link": "https://www.coursera.org/professional-certificates/ibm-data-engineer"},
+      {"title": "AWS Certified Big Data - Specialty", "link": "https://aws.amazon.com/certification/certified-big-data-specialty/"}
+    ],
+    "playlists": [
+      {"title": "Data Engineering Course", "link": "https://www.youtube.com/watch?v=qWru-b6m030"},
+      {"title": "Apache Spark Tutorial", "link": "https://www.youtube.com/watch?v=_C0T88QRXkM"},
+      {"title": "SQL for Data Engineers", "link": "https://www.youtube.com/watch?v=HXV3zeQKqGY"}
+    ]
+  },
+  {
+    "role": "Big Data Engineer",
+    "category": "data",
+    "roadmap": ["Distributed Computing Concepts", "Hadoop Ecosystem", "Apache Spark & Scala", "NoSQL Databases (MongoDB/Cassandra)", "Data Streaming (Kafka/Kinesis)", "Cloud Big Data Services", "Data Lake Architecture", "Performance Optimization", "Data Security & Privacy", "Real-time Analytics"],
+    "certificates": [
+      {"title": "Cloudera Certified Data Engineer", "link": "https://www.cloudera.com/about/training/certification.html"},
+      {"title": "IBM Big Data Engineer Professional Certificate", "link": "https://www.coursera.org/professional-certificates/ibm-data-engineer"},
+      {"title": "Google Cloud Professional Data Engineer", "link": "https://www.coursera.org/professional-certificates/gcp-data-engineering"}
+    ],
+    "playlists": [
+      {"title": "Big Data Technologies Course", "link": "https://www.youtube.com/watch?v=KCLOPfdiLuQ"},
+      {"title": "Hadoop Full Course", "link": "https://www.youtube.com/watch?v=-9XzHxB16Uo"},
+      {"title": "Apache Kafka Tutorial", "link": "https://www.youtube.com/watch?v=R873BlNVUB4"}
+    ]
+  },
+  {
+    "role": "Cybersecurity Analyst",
+    "category": "security",
+    "roadmap": ["Network Security Fundamentals", "Operating Systems (Linux/Windows)", "Security Tools & Technologies", "Incident Response & Forensics", "Risk Assessment & Management", "Compliance & Regulations", "Penetration Testing Basics", "Security Information Event Management (SIEM)", "Threat Intelligence", "Security Awareness & Training"],
+    "certificates": [
+      {"title": "Google Cybersecurity Professional Certificate", "link": "https://www.coursera.org/professional-certificates/google-cybersecurity"},
+      {"title": "IBM Cybersecurity Analyst Professional Certificate", "link": "https://www.coursera.org/professional-certificates/ibm-cybersecurity-analyst"},
+      {"title": "FreeCodeCamp Information Security", "link": "https://www.freecodecamp.org/learn/information-security/"}
+    ],
+    "playlists": [
+      {"title": "Cybersecurity Full Course for Beginners", "link": "https://www.youtube.com/watch?v=U_P23SqJaDc"},
+      {"title": "Ethical Hacking Full Course", "link": "https://www.youtube.com/watch?v=3Kq1MIfTWCE"},
+      {"title": "Network Security Course", "link": "https://www.youtube.com/watch?v=JmEPNGSjNPA"}
+    ]
+  },
+  {
+    "role": "Ethical Hacker",
+    "category": "security",
+    "roadmap": ["Network Fundamentals", "Linux Command Line", "Programming (Python/Bash)", "Vulnerability Assessment", "Penetration Testing Methodology", "Web Application Security", "Social Engineering", "Malware Analysis", "Forensics & Incident Response", "Legal & Ethical Considerations"],
+    "certificates": [
+      {"title": "IBM Cybersecurity Analyst Professional Certificate", "link": "https://www.coursera.org/professional-certificates/ibm-cybersecurity-analyst"},
+      {"title": "Ethical Hacking Essentials", "link": "https://www.coursera.org/learn/ethical-hacking-essentials"},
+      {"title": "Cybersecurity Fundamentals", "link": "https://www.edx.org/course/cybersecurity-fundamentals"}
+    ],
+    "playlists": [
+      {"title": "Ethical Hacking Course", "link": "https://www.youtube.com/watch?v=dz7Ntp7KQGA"},
+      {"title": "Penetration Testing Tutorial", "link": "https://www.youtube.com/watch?v=WnN6dbos5u8"},
+      {"title": "Kali Linux Tutorial", "link": "https://www.youtube.com/watch?v=lZAoFs75_cs"}
+    ]
+  },
+  {
+    "role": "Cloud Engineer",
+    "category": "infrastructure",
+    "roadmap": ["Cloud Computing Fundamentals", "AWS/Azure/GCP Services", "Infrastructure as Code (Terraform)", "Containerization (Docker/Kubernetes)", "CI/CD Pipelines", "Cloud Security", "Monitoring & Logging", "Serverless Computing", "Database Management", "Cost Optimization"],
+    "certificates": [
+      {"title": "AWS Cloud Practitioner", "link": "https://www.coursera.org/learn/aws-cloud-practitioner-essentials"},
+      {"title": "Google Cloud Digital Leader", "link": "https://www.coursera.org/learn/google-cloud-digital-leader-training"},
+      {"title": "Microsoft Azure Fundamentals", "link": "https://www.coursera.org/learn/microsoft-azure-fundamentals-az-900"}
+    ],
+    "playlists": [
+      {"title": "AWS Full Course", "link": "https://www.youtube.com/watch?v=3hLmDS179YE"},
+      {"title": "Docker Tutorial for Beginners", "link": "https://www.youtube.com/watch?v=pTFZFxd4hOI"},
+      {"title": "Kubernetes Crash Course", "link": "https://www.youtube.com/watch?v=s_o8dwzRlu4"}
+    ]
+  },
+  {
+    "role": "DevOps Engineer",
+    "category": "infrastructure",
+    "roadmap": ["Linux System Administration", "Version Control (Git)", "CI/CD Pipelines (Jenkins/GitLab CI)", "Infrastructure as Code (Terraform/Ansible)", "Containerization (Docker/Kubernetes)", "Cloud Platforms (AWS/Azure/GCP)", "Monitoring & Logging (Prometheus/ELK)", "Configuration Management", "Security Best Practices", "Automation Scripting"],
+    "certificates": [
+      {"title": "IBM DevOps and Software Engineering Professional Certificate", "link": "https://www.coursera.org/professional-certificates/devops-and-software-engineering"},
+      {"title": "Google Cloud DevOps Engineer", "link": "https://www.coursera.org/professional-certificates/sre-devops-engineer-google-cloud"},
+      {"title": "Introduction to DevOps", "link": "https://www.coursera.org/learn/intro-to-devops"}
+    ],
+    "playlists": [
+      {"title": "DevOps Engineering Course", "link": "https://www.youtube.com/watch?v=j5Zsa_eOXeY"},
+      {"title": "Jenkins Tutorial", "link": "https://www.youtube.com/watch?v=7KCS70sCoK0"},
+      {"title": "Terraform Course for Beginners", "link": "https://www.youtube.com/watch?v=SLB_c_ayRMo"}
+    ]
+  },
+  {
+    "role": "Site Reliability Engineer (SRE)",
+    "category": "infrastructure",
+    "roadmap": ["System Administration (Linux)", "Programming (Python/Go)", "Monitoring & Alerting", "Incident Management", "Capacity Planning", "Service Level Objectives (SLOs)", "Automation & Scripting", "Distributed Systems", "Performance Optimization", "Post-Incident Reviews"],
+    "certificates": [
+      {"title": "Google Cloud SRE Professional Certificate", "link": "https://www.coursera.org/professional-certificates/sre-devops-engineer-google-cloud"},
+      {"title": "Site Reliability Engineering: Measuring and Managing Reliability", "link": "https://www.coursera.org/learn/site-reliability-engineering-slos"},
+      {"title": "IBM DevOps and Software Engineering", "link": "https://www.coursera.org/professional-certificates/devops-and-software-engineering"}
+    ],
+    "playlists": [
+      {"title": "Site Reliability Engineering Course", "link": "https://www.youtube.com/watch?v=OnK4IKgLl24"},
+      {"title": "Monitoring and Alerting Best Practices", "link": "https://www.youtube.com/watch?v=MEzFjysEDy8"},
+      {"title": "Linux System Administration", "link": "https://www.youtube.com/watch?v=wsh64rjnRas"}
+    ]
+  },
+  {
+    "role": "Database Administrator",
+    "category": "infrastructure",
+    "roadmap": ["Database Fundamentals", "SQL Mastery", "Database Design & Normalization", "Performance Tuning", "Backup & Recovery", "Security & Access Control", "High Availability & Clustering", "Database Monitoring", "Cloud Database Services", "Automation & Scripting"],
+    "certificates": [
+      {"title": "Oracle Database Administrator Certified Professional", "link": "https://education.oracle.com/oracle-database-administration"},
+      {"title": "Microsoft SQL Server Database Administrator", "link": "https://docs.microsoft.com/en-us/learn/certifications/"},
+      {"title": "PostgreSQL Database Administration", "link": "https://www.postgresql.org/docs/"}
+    ],
+    "playlists": [
+      {"title": "Database Administration Full Course", "link": "https://www.youtube.com/watch?v=ztHopE5Wnpc"},
+      {"title": "SQL Server DBA Tutorial", "link": "https://www.youtube.com/watch?v=7S_tz1z_5bA"},
+      {"title": "MySQL Database Administration", "link": "https://www.youtube.com/watch?v=7S_tz1z_5bA"}
+    ]
+  },
+  {
+    "role": "Systems Administrator",
+    "category": "infrastructure",
+    "roadmap": ["Linux/Windows Server Administration", "Network Configuration", "Virtualization Technologies", "System Monitoring & Performance", "Security Hardening", "Backup & Disaster Recovery", "Automation & Scripting", "Cloud Infrastructure", "Troubleshooting", "Documentation"],
+    "certificates": [
+      {"title": "CompTIA Server+", "link": "https://www.comptia.org/certifications/server"},
+      {"title": "Red Hat Certified System Administrator", "link": "https://www.redhat.com/en/services/certification/rhcsa"},
+      {"title": "Microsoft Certified: Windows Server Hybrid Administrator", "link": "https://docs.microsoft.com/en-us/learn/certifications/"}
+    ],
+    "playlists": [
+      {"title": "Linux System Administration Course", "link": "https://www.youtube.com/watch?v=wsh64rjnRas"},
+      {"title": "Windows Server Administration", "link": "https://www.youtube.com/watch?v=79qlf-ot6K8"},
+      {"title": "Network Administration Tutorial", "link": "https://www.youtube.com/watch?v=qiQR5rTSshw"}
+    ]
+  },
+  {
+    "role": "Network Engineer",
+    "category": "infrastructure",
+    "roadmap": ["Network Fundamentals (TCP/IP, OSI Model)", "Routing & Switching", "Network Security", "Wireless Technologies", "Network Design & Architecture", "Network Monitoring & Troubleshooting", "SDN & Network Automation", "Cloud Networking", "VPN Technologies", "Network Protocols"],
+    "certificates": [
+      {"title": "Cisco CCNA", "link": "https://www.cisco.com/c/en/us/training-events/training-certifications/certifications/associate/ccna.html"},
+      {"title": "CompTIA Network+", "link": "https://www.comptia.org/certifications/network"},
+      {"title": "Juniper Networks Certified Associate", "link": "https://www.juniper.net/us/en/training/certification/"}
+    ],
+    "playlists": [
+      {"title": "Network Engineering Full Course", "link": "https://www.youtube.com/watch?v=qiQR5rTSshw"},
+      {"title": "CCNA Complete Course", "link": "https://www.youtube.com/watch?v=rv3QK2UquxM"},
+      {"title": "Network Security Fundamentals", "link": "https://www.youtube.com/watch?v=JmEPNGSjNPA"}
+    ]
+  },
+  {
+    "role": "IT Support Specialist",
+    "category": "infrastructure",
+    "roadmap": ["Computer Hardware & Software", "Operating Systems (Windows/Mac/Linux)", "Networking Basics", "Troubleshooting Methodology", "Help Desk Operations", "Remote Support Tools", "Mobile Device Management", "Security Fundamentals", "Customer Service Skills", "Documentation & Ticketing"],
+    "certificates": [
+      {"title": "Google IT Support Professional Certificate", "link": "https://www.coursera.org/professional-certificates/google-it-support"},
+      {"title": "CompTIA A+", "link": "https://www.comptia.org/certifications/a"},
+      {"title": "Microsoft 365 Certified: Fundamentals", "link": "https://docs.microsoft.com/en-us/learn/certifications/"}
+    ],
+    "playlists": [
+      {"title": "IT Support Full Course", "link": "https://www.youtube.com/watch?v=Wbk6LvGJnFE"},
+      {"title": "CompTIA A+ Course", "link": "https://www.youtube.com/watch?v=87t6P5ZHTP0"},
+      {"title": "Windows 10 Support Tutorial", "link": "https://www.youtube.com/watch?v=MfLS-l4mCZM"}
+    ]
+  },
+  {
+    "role": "UI/UX Designer",
+    "category": "design",
+    "roadmap": ["Design Principles & Theory", "User Research Methods", "Wireframing & Prototyping", "Visual Design", "Interaction Design", "Usability Testing", "Design Tools (Figma/Sketch/Adobe XD)", "Information Architecture", "Accessibility Design", "Design Systems"],
+    "certificates": [
+      {"title": "Google UX Design Professional Certificate", "link": "https://www.coursera.org/professional-certificates/google-ux-design"},
+      {"title": "IBM Design Thinking Practitioner", "link": "https://www.ibm.com/design/thinking/"},
+      {"title": "Adobe Certified Expert (ACE)", "link": "https://www.adobe.com/training/certification.html"}
+    ],
+    "playlists": [
+      {"title": "UI/UX Design Full Course", "link": "https://www.youtube.com/watch?v=c9Wg6Cb_YlU"},
+      {"title": "Figma Tutorial for Beginners", "link": "https://www.youtube.com/watch?v=FTFaQWZBqQ8"},
+      {"title": "User Experience Design Course", "link": "https://www.youtube.com/watch?v=Ovj4hFxko7c"},
+      {"title": "Design System Tutorial", "link": "https://www.youtube.com/watch?v=wc5krSHtFdw"}
+    ]
+  },
+  {
+    "role": "Product Manager (Tech)",
+    "category": "design",
+    "roadmap": ["Product Strategy & Vision", "Market Research & Analysis", "User Story Writing", "Agile & Scrum Methodologies", "Data Analysis & Metrics", "Stakeholder Management", "Technical Understanding", "Go-to-Market Strategy", "Product Roadmapping", "A/B Testing"],
+    "certificates": [
+      {"title": "Google Product Management Certificate", "link": "https://www.coursera.org/professional-certificates/google-project-management"},
+      {"title": "IBM Product Manager Professional Certificate", "link": "https://www.coursera.org/professional-certificates/ibm-product-manager"},
+      {"title": "Product Management Fundamentals", "link": "https://www.coursera.org/learn/product-management-fundamentals"}
+    ],
+    "playlists": [
+      {"title": "Product Management Full Course", "link": "https://www.youtube.com/watch?v=2WOdDlg_n20"},
+      {"title": "Agile Product Management", "link": "https://www.youtube.com/watch?v=502ILHjX9EE"},
+      {"title": "Product Strategy and Planning", "link": "https://www.youtube.com/watch?v=VizmjTDiXYA"}
+    ]
+  },
+  {
+    "role": "Game Developer",
+    "category": "development",
+    "roadmap": ["Programming Languages (C#/C++/JavaScript)", "Game Engines (Unity/Unreal Engine)", "Game Design Principles", "2D/3D Graphics Programming", "Physics & Mathematics", "Audio Integration", "Game Optimization", "Platform-Specific Development", "Version Control for Games", "Game Testing & QA"],
+    "certificates": [
+      {"title": "Unity Certified Programmer", "link": "https://unity.com/learn/unity-academy"},
+      {"title": "Unreal Engine Developer Course", "link": "https://www.unrealengine.com/en-US/onlinelearning-courses"},
+      {"title": "Game Development with C#", "link": "https://www.coursera.org/specializations/game-development"}
+    ],
+    "playlists": [
+      {"title": "Unity Game Development Tutorial", "link": "https://www.youtube.com/watch?v=gB1F9G0JXOo"},
+      {"title": "Unreal Engine 4 Course", "link": "https://www.youtube.com/watch?v=LsNW4FPHuZE"},
+      {"title": "Game Development with Godot", "link": "https://www.youtube.com/watch?v=VeCrE-ge8xM"}
+    ]
+  },
+  {
+    "role": "AR/VR Developer",
+    "category": "development",
+    "roadmap": ["3D Mathematics & Geometry", "Unity/Unreal Engine for XR", "AR Frameworks (ARCore/ARKit)", "VR SDKs (Oculus/SteamVR)", "3D Modeling & Animation", "Spatial Computing", "User Interaction Design", "Performance Optimization", "Cross-Platform Development", "Hardware Integration"],
+    "certificates": [
+      {"title": "Meta AR Developer Professional Certificate", "link": "https://www.coursera.org/professional-certificates/meta-ar-developer"},
+      {"title": "Unity XR Development", "link": "https://learn.unity.com/pathway/xr-development-pathway"},
+      {"title": "Google AR/VR Development", "link": "https://developers.google.com/ar"}
+    ],
+    "playlists": [
+      {"title": "AR/VR Development Full Course", "link": "https://www.youtube.com/watch?v=WzfDo2Wpxks"},
+      {"title": "Unity AR Foundation Tutorial", "link": "https://www.youtube.com/watch?v=gpaq5bAjya8"},
+      {"title": "VR Development with Oculus", "link": "https://www.youtube.com/watch?v=gGYtahQjmWQ"}
+    ]
+  },
+  {
+    "role": "Software Engineer (General)",
+    "category": "development",
+    "roadmap": ["Programming Fundamentals", "Data Structures & Algorithms", "Object-Oriented Programming", "Software Design Patterns", "Version Control Systems", "Testing & Debugging", "Database Design", "API Development", "System Architecture", "Software Development Life Cycle"],
+    "certificates": [
+      {"title": "IBM Software Engineer Professional Certificate", "link": "https://www.coursera.org/professional-certificates/ibm-software-engineer"},
+      {"title": "Google Software Engineering Certificate", "link": "https://www.coursera.org/professional-certificates/google-it-support"},
+      {"title": "FreeCodeCamp Software Development", "link": "https://www.freecodecamp.org/learn/"}
+    ],
+    "playlists": [
+      {"title": "Software Engineering Full Course", "link": "https://www.youtube.com/watch?v=hou6lOW9dCE"},
+      {"title": "Data Structures and Algorithms", "link": "https://www.youtube.com/watch?v=RBSGKlAvoiM"},
+      {"title": "System Design Interview Prep", "link": "https://www.youtube.com/watch?v=UzLMhqg3_Wc"}
+    ]
+  },
+  {
+    "role": "Blockchain Developer",
+    "category": "emerging",
+    "roadmap": ["Blockchain Fundamentals", "Cryptocurrency & Economics", "Smart Contract Development", "Solidity Programming", "Ethereum Development", "Web3 Technologies", "DeFi Protocols", "Security Best Practices", "Testing & Debugging", "Frontend Integration"],
+    "certificates": [
+      {"title": "IBM Blockchain Professional Certificate", "link": "https://www.coursera.org/professional-certificates/ibm-blockchain"},
+      {"title": "Blockchain Basics", "link": "https://www.coursera.org/learn/blockchain-basics"},
+      {"title": "Smart Contracts", "link": "https://www.coursera.org/learn/smarter-contracts"}
+    ],
+    "playlists": [
+      {"title": "Blockchain Development Full Course", "link": "https://www.youtube.com/watch?v=M576WGiDBdQ"},
+      {"title": "Solidity Course", "link": "https://www.youtube.com/watch?v=ipwxYa-F1uY"},
+      {"title": "Ethereum Development Tutorial", "link": "https://www.youtube.com/watch?v=a0osIaAOFSE"}
+    ]
+  },
+  {
+    "role": "Web3 Developer",
+    "category": "emerging",
+    "roadmap": ["Blockchain Fundamentals", "JavaScript & Node.js", "Solidity Smart Contracts", "Web3.js & Ethers.js", "DApp Development", "IPFS & Decentralized Storage", "MetaMask Integration", "DeFi Protocols", "NFT Development", "Frontend Frameworks (React/Vue)"],
+    "certificates": [
+      {"title": "IBM Blockchain Professional Certificate", "link": "https://www.coursera.org/professional-certificates/ibm-blockchain"},
+      {"title": "Decentralized Applications (Dapps)", "link": "https://www.coursera.org/learn/decentralized-apps-on-blockchain"},
+      {"title": "Web3 and Blockchain Fundamentals", "link": "https://www.edx.org/course/blockchain-fundamentals"}
+    ],
+    "playlists": [
+      {"title": "Web3 Development Full Course", "link": "https://www.youtube.com/watch?v=gyMwXuJrbJQ"},
+      {"title": "DApp Development Tutorial", "link": "https://www.youtube.com/watch?v=IS_9APyHgsM"},
+      {"title": "NFT Development Course", "link": "https://www.youtube.com/watch?v=YC_ho1QeKPY"}
+    ]
+  },
+  {
+    "role": "Embedded Systems Engineer",
+    "category": "emerging",
+    "roadmap": ["C/C++ Programming", "Microcontroller Programming", "Real-Time Operating Systems", "Hardware Design Principles", "Circuit Analysis", "Communication Protocols", "Debugging Tools", "Power Management", "Safety Standards", "IoT Integration"],
+    "certificates": [
+      {"title": "ARM Embedded Systems Development", "link": "https://www.arm.com/resources/education/online-courses"},
+      {"title": "Embedded Systems Programming", "link": "https://www.coursera.org/learn/embedded-systems-programming"},
+      {"title": "Microcontroller Programming Certificate", "link": "https://www.edx.org/course/embedded-systems"}
+    ],
+    "playlists": [
+      {"title": "Embedded Systems Full Course", "link": "https://www.youtube.com/watch?v=3V9eqvkMzHA"},
+      {"title": "Arduino Programming Tutorial", "link": "https://www.youtube.com/watch?v=zJ-LqeX_fLU"},
+      {"title": "Microcontroller Programming", "link": "https://www.youtube.com/watch?v=7vhvnaWUZjE"}
+    ]
+  },
+  {
+    "role": "IoT Engineer",
+    "category": "emerging",
+    "roadmap": ["IoT Architecture & Protocols", "Embedded Programming", "Sensor Integration", "Cloud IoT Platforms", "Wireless Communication", "Data Analytics", "Security for IoT", "Edge Computing", "Device Management", "Industrial IoT"],
+    "certificates": [
+      {"title": "IBM IoT Professional Certificate", "link": "https://www.coursera.org/professional-certificates/ibm-iot"},
+      {"title": "AWS IoT Core Specialty", "link": "https://aws.amazon.com/certification/certified-iot-core-specialty/"},
+      {"title": "Google Cloud IoT Certificate", "link": "https://cloud.google.com/training/iot"}
+    ],
+    "playlists": [
+      {"title": "IoT Full Course", "link": "https://www.youtube.com/watch?v=h0gWfVCSGQQ"},
+      {"title": "IoT with Raspberry Pi", "link": "https://www.youtube.com/watch?v=LXirmw_bCD8"},
+      {"title": "AWS IoT Tutorial", "link": "https://www.youtube.com/watch?v=ZuEgLKUOuGg"}
+    ]
+  },
+  {
+    "role": "Robotics Engineer",
+    "category": "emerging",
+    "roadmap": ["Robotics Fundamentals", "Control Systems", "Computer Vision", "Machine Learning", "Mechanical Design", "Programming (Python/C++/ROS)", "Sensor Integration", "Path Planning", "Human-Robot Interaction", "Safety Systems"],
+    "certificates": [
+      {"title": "Robot Operating System (ROS)", "link": "https://www.ros.org/"},
+      {"title": "Robotics Specialization", "link": "https://www.coursera.org/specializations/robotics"},
+      {"title": "Introduction to Robotics", "link": "https://www.edx.org/course/introduction-to-robotics"}
+    ],
+    "playlists": [
+      {"title": "Robotics Engineering Course", "link": "https://www.youtube.com/watch?v=0yD3uBshJB0"},
+      {"title": "ROS Tutorial for Beginners", "link": "https://www.youtube.com/watch?v=wfDJAYTMTdk"},
+      {"title": "Computer Vision for Robotics", "link": "https://www.youtube.com/watch?v=01sAkU_NvOY"}
+    ]
+  },
+  {
+    "role": "QA / Test Automation Engineer",
+    "category": "emerging",
+    "roadmap": ["Software Testing Fundamentals", "Test Automation Frameworks", "Programming for Testing", "API Testing", "Performance Testing", "Mobile Testing", "CI/CD Integration", "Bug Tracking & Reporting", "Test Strategy & Planning", "Security Testing"],
+    "certificates": [
+      {"title": "ISTQB Foundation Level", "link": "https://www.istqb.org/"},
+      {"title": "Selenium WebDriver Certification", "link": "https://www.selenium.dev/"},
+      {"title": "Agile Testing Certification", "link": "https://www.agilealliance.org/agile101/"}
+    ],
+    "playlists": [
+      {"title": "Test Automation Full Course", "link": "https://www.youtube.com/watch?v=E2s6kCnXw6g"},
+      {"title": "Selenium Tutorial", "link": "https://www.youtube.com/watch?v=5FUdrBq-WFo"},
+      {"title": "API Testing with Postman", "link": "https://www.youtube.com/watch?v=VywxIQ2ZXw4"}
+    ]
+  }
+]
